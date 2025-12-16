@@ -7,7 +7,7 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
 }
@@ -22,19 +22,28 @@ h1 {
     font-size: 48px;
     margin-bottom: 10px;
     color: #4fc3f7;
+    text-align: center;
 }
 
 .subtitle {
     font-size: 20px;
     opacity: 0.8;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .card {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 25px;
-    margin-top: 30px;
+    margin-top: 25px;
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 
 textarea {
@@ -57,6 +66,7 @@ button {
     color: black;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.2s;
 }
 
 button:hover {
@@ -70,19 +80,32 @@ button:hover {
     word-wrap: break-word;
 }
 
-.download {
+.download, .github-link {
     display: inline-block;
-    margin-top: 25px;
-    padding: 14px 22px;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.download {
     background: #00e676;
     color: black;
-    font-weight: bold;
-    border-radius: 10px;
-    text-decoration: none;
 }
 
 .download:hover {
     background: #1aff8c;
+}
+
+.github-link {
+    background: #ff9800;
+    color: black;
+}
+
+.github-link:hover {
+    background: #ffc153;
 }
 
 .footer {
@@ -109,9 +132,17 @@ button:hover {
 
     <div class="card">
         <h2>Descarca aplicatia</h2>
-        <p>Versiune desktop realizata in Python + Tkinter.</p>
+        <p>Versiune desktop realizata in Python + Tkinter</p>
         <a class="download" href="smallcapsandreior.exe" download>
-            Descarca aplicatia (.exe)
+            Descarca .exe
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>Open Source</h2>
+        <p>Codul sursa este public pe GitHub. Oricine poate vedea si modifica aplicatia.</p>
+        <a class="github-link" href="https://github.com/AndREiOR5/Small-Caps-App" target="_blank">
+            Vezi pe GitHub
         </a>
     </div>
 
@@ -121,34 +152,18 @@ button:hover {
             Windows poate afisa mesajul <strong>„Windows protected your PC”</strong>
             atunci cand rulezi aplicatia pentru prima data.
         </p>
-
-        <p>
-            Acest lucru este normal si apare deoarece aplicatia:
-        </p>
-
+        <p>Acest lucru este normal si apare deoarece aplicatia:</p>
         <ul>
             <li>este creata de un dezvoltator independent</li>
-            <li>nu este semnata digital cu un certificat comercial</li>
+            <li>nu este semnata digital</li>
             <li>este descarcata de pe internet</li>
         </ul>
-
-        <p>
-            Aplicatia <strong>NU contine virusi</strong> si este
-            <strong>open-source</strong>. Codul poate fi verificat pe GitHub.
-        </p>
-
-        <p>
-            Pentru a rula aplicatia:
-        </p>
-
+        <p>Aplicatia <strong>NU contine virusi</strong> si este open-source. Codul poate fi verificat pe GitHub.</p>
+        <p>Pasii pentru a rula aplicatia:</p>
         <ol>
             <li>Apasa <strong>More info</strong></li>
             <li>Apasa <strong>Run anyway</strong></li>
         </ol>
-
-        <p>
-            Acest mesaj este standard pentru aplicatii de portofoliu si proiecte personale.
-        </p>
     </div>
 
     <div class="footer">
