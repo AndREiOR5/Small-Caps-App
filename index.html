@@ -11,159 +11,86 @@
     --green: #00e676;
     --orange: #ff9800;
 
-    /* Dark theme */
-    --bg-dark: #0b1220;
-    --card-dark: #121a2f;
-    --text-dark: #ffffff;
-    --muted-dark: #aaaaaa;
+    --bg-dark: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --card-dark: rgba(255,255,255,0.08);
+    --text-dark: white;
+    --muted-dark: rgba(255,255,255,0.7);
 
-    /* Light theme */
     --bg-light: #f7f9fc;
     --card-light: #ffffff;
     --text-light: #1f2933;
     --muted-light: #666666;
 }
 
-* {
-    box-sizing: border-box;
+/* Default: dark theme */
+body[data-theme="dark"] {
+    background: var(--bg-dark);
+    color: var(--text-dark);
 }
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    transition: background 0.4s, color 0.4s;
+body[data-theme="dark"] .card {
+    background: var(--card-dark);
+    color: var(--text-dark);
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px;
+body[data-theme="dark"] .subtitle {
+    color: var(--muted-dark);
 }
 
-h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-    color: var(--blue);
-    text-align: center;
+body[data-theme="dark"] .footer {
+    color: var(--muted-dark);
 }
 
-.subtitle {
-    font-size: 20px;
-    opacity: 0.8;
-    text-align: center;
-    margin-bottom: 30px;
+/* Light theme */
+body[data-theme="light"] {
+    background: var(--bg-light);
+    color: var(--text-light);
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 25px;
-    margin-top: 25px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
-    opacity: 0;
-    transform: translateY(20px);
+body[data-theme="light"] .card {
+    background: var(--card-light);
+    color: var(--text-light);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+body[data-theme="light"] .subtitle {
+    color: var(--muted-light);
 }
 
-textarea {
-    width: 100%;
-    height: 100px;
-    border-radius: 8px;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    resize: none;
+body[data-theme="light"] .footer {
+    color: var(--muted-light);
 }
 
-button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background: var(--blue);
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-
-button:hover {
-    background: #81d4fa;
-}
-
-.output {
-    margin-top: 15px;
-    font-size: 18px;
-    min-height: 30px;
-    word-wrap: break-word;
-}
-
-.download, .github-link {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.download {
-    background: var(--green);
-    color: black;
-}
-
-.download:hover {
-    background: #1aff8c;
-}
-
-.github-link {
-    background: var(--orange);
-    color: black;
-}
-
-.github-link:hover {
-    background: #ffc153;
-}
-
-.footer {
-    margin-top: 50px;
-    opacity: 0.6;
-    font-size: 14px;
-    text-align: center;
-}
+/* General styles */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background 0.4s, color 0.4s; }
+.container { max-width: 900px; margin: auto; padding: 40px; }
+h1 { font-size: 48px; margin-bottom: 10px; color: var(--blue); text-align: center; }
+.subtitle { font-size: 20px; opacity: 0.8; text-align: center; margin-bottom: 30px; }
+.card { border-radius: 12px; padding: 25px; margin-top: 25px; box-shadow: 0 0 30px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s; opacity: 0; transform: translateY(20px);}
+.card:hover { transform: translateY(-5px); box-shadow: 0 0 40px rgba(0,0,0,0.5);}
+textarea { width: 100%; height: 100px; border-radius: 8px; border: none; padding: 12px; font-size: 16px; resize: none;}
+button { margin-top: 15px; padding: 12px 20px; font-size: 16px; border: none; border-radius: 8px; background: var(--blue); color: black; cursor: pointer; font-weight: bold; transition: background 0.2s;}
+button:hover { background: #81d4fa; }
+.output { margin-top: 15px; font-size: 18px; min-height: 30px; word-wrap: break-word;}
+.download, .github-link { display: inline-block; margin-top: 15px; padding: 12px 20px; border-radius: 10px; font-weight: bold; text-decoration: none; transition: background 0.2s;}
+.download { background: var(--green); color: black; }
+.download:hover { background: #1aff8c;}
+.github-link { background: var(--orange); color: black; }
+.github-link:hover { background: #ffc153;}
+.footer { margin-top: 50px; opacity: 0.6; font-size: 14px; text-align: center; }
 
 /* Toggle button */
 .toggle-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--blue);
-    border: none;
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 1000;
-    transition: background 0.3s;
+    position: fixed; top: 20px; right: 20px;
+    background: var(--blue); border: none; color: #fff;
+    padding: 10px 16px; border-radius: 8px; cursor: pointer;
+    font-weight: bold; z-index: 1000; transition: background 0.3s;
 }
-
-.toggle-btn:hover {
-    background: #05a0e6;
-}
+.toggle-btn:hover { background: #05a0e6; }
 </style>
 </head>
 
-<body>
+<body data-theme="dark">
 
 <button class="toggle-btn" onclick="toggleTheme()">Light / Dark</button>
 
@@ -236,28 +163,10 @@ function convert() {
     document.getElementById("output").textContent = result;
 }
 
-// Dark/Light Toggle
+// Dark/Light toggle using data-theme
 function toggleTheme() {
     const body = document.body;
-    const cards = document.querySelectorAll(".card");
-    const header = document.querySelector("body");
-    if(body.style.background.includes("linear-gradient")) {
-        // Light theme
-        body.style.background = "#f7f9fc";
-        body.style.color = "#1f2933";
-        cards.forEach(c => {
-            c.style.background = "#ffffff";
-            c.style.color = "#1f2933";
-        });
-    } else {
-        // Dark theme
-        body.style.background = "linear-gradient(135deg, #0f2027, #203a43, #2c5364)";
-        body.style.color = "white";
-        cards.forEach(c => {
-            c.style.background = "rgba(255, 255, 255, 0.08)";
-            c.style.color = "white";
-        });
-    }
+    body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
 }
 
 // Fade-in cards
