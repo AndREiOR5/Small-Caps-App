@@ -7,22 +7,21 @@
 
 <style>
 :root {
-    --blue: #4fc3f7;
-    --green: #00e676;
-    --orange: #ff9800;
+    --blue: #08afff;
 
-    --bg-dark: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    --card-dark: rgba(255,255,255,0.08);
-    --text-dark: white;
-    --muted-dark: rgba(255,255,255,0.7);
+    /* Dark theme */
+    --bg-dark: #000000;
+    --card-dark: #111111;
+    --text-dark: #ffffff;
+    --muted-dark: #aaaaaa;
 
+    /* Light theme */
     --bg-light: #f7f9fc;
     --card-light: #ffffff;
-    --text-light: #1f2933;
+    --text-light: #111111;
     --muted-light: #666666;
 }
 
-/* Default: dark theme */
 body[data-theme="dark"] {
     background: var(--bg-dark);
     color: var(--text-dark);
@@ -41,7 +40,6 @@ body[data-theme="dark"] .footer {
     color: var(--muted-dark);
 }
 
-/* Light theme */
 body[data-theme="light"] {
     background: var(--bg-light);
     color: var(--text-light);
@@ -62,20 +60,20 @@ body[data-theme="light"] .footer {
 
 /* General styles */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background 0.4s, color 0.4s; }
+body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; transition: background 0.4s, color 0.4s; }
 .container { max-width: 900px; margin: auto; padding: 40px; }
 h1 { font-size: 48px; margin-bottom: 10px; color: var(--blue); text-align: center; }
 .subtitle { font-size: 20px; opacity: 0.8; text-align: center; margin-bottom: 30px; }
 .card { border-radius: 12px; padding: 25px; margin-top: 25px; box-shadow: 0 0 30px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s; opacity: 0; transform: translateY(20px);}
-.card:hover { transform: translateY(-5px); box-shadow: 0 0 40px rgba(0,0,0,0.5);}
+.card:hover { transform: translateY(-5px); box-shadow: 0 0 40px rgba(8,175,255,0.2);}
 textarea { width: 100%; height: 100px; border-radius: 8px; border: none; padding: 12px; font-size: 16px; resize: none;}
 button { margin-top: 15px; padding: 12px 20px; font-size: 16px; border: none; border-radius: 8px; background: var(--blue); color: black; cursor: pointer; font-weight: bold; transition: background 0.2s;}
-button:hover { background: #81d4fa; }
+button:hover { background: #06a0e6; }
 .output { margin-top: 15px; font-size: 18px; min-height: 30px; word-wrap: break-word;}
 .download, .github-link { display: inline-block; margin-top: 15px; padding: 12px 20px; border-radius: 10px; font-weight: bold; text-decoration: none; transition: background 0.2s;}
-.download { background: var(--green); color: black; }
+.download { background: #00e676; color: black; }
 .download:hover { background: #1aff8c;}
-.github-link { background: var(--orange); color: black; }
+.github-link { background: #ff9800; color: black; }
 .github-link:hover { background: #ffc153;}
 .footer { margin-top: 50px; opacity: 0.6; font-size: 14px; text-align: center; }
 
@@ -86,7 +84,7 @@ button:hover { background: #81d4fa; }
     padding: 10px 16px; border-radius: 8px; cursor: pointer;
     font-weight: bold; z-index: 1000; transition: background 0.3s;
 }
-.toggle-btn:hover { background: #05a0e6; }
+.toggle-btn:hover { background: #06a0e6; }
 </style>
 </head>
 
@@ -163,7 +161,7 @@ function convert() {
     document.getElementById("output").textContent = result;
 }
 
-// Dark/Light toggle using data-theme
+// Dark/Light toggle
 function toggleTheme() {
     const body = document.body;
     body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
