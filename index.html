@@ -2,14 +2,38 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Small Caps App</title>
 
 <style>
+:root {
+    --blue: #4fc3f7;
+    --green: #00e676;
+    --orange: #ff9800;
+
+    /* Dark theme */
+    --bg-dark: #0b1220;
+    --card-dark: #121a2f;
+    --text-dark: #ffffff;
+    --muted-dark: #aaaaaa;
+
+    /* Light theme */
+    --bg-light: #f7f9fc;
+    --card-light: #ffffff;
+    --text-light: #1f2933;
+    --muted-light: #666666;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
+    transition: background 0.4s, color 0.4s;
 }
 
 .container {
@@ -21,7 +45,7 @@ body {
 h1 {
     font-size: 48px;
     margin-bottom: 10px;
-    color: #4fc3f7;
+    color: var(--blue);
     text-align: center;
 }
 
@@ -38,7 +62,9 @@ h1 {
     padding: 25px;
     margin-top: 25px;
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .card:hover {
@@ -62,7 +88,7 @@ button {
     font-size: 16px;
     border: none;
     border-radius: 8px;
-    background: #4fc3f7;
+    background: var(--blue);
     color: black;
     cursor: pointer;
     font-weight: bold;
@@ -91,7 +117,7 @@ button:hover {
 }
 
 .download {
-    background: #00e676;
+    background: var(--green);
     color: black;
 }
 
@@ -100,7 +126,7 @@ button:hover {
 }
 
 .github-link {
-    background: #ff9800;
+    background: var(--orange);
     color: black;
 }
 
@@ -114,10 +140,32 @@ button:hover {
     font-size: 14px;
     text-align: center;
 }
+
+/* Toggle button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--blue);
+    border: none;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+    background: #05a0e6;
+}
 </style>
 </head>
 
 <body>
+
+<button class="toggle-btn" onclick="toggleTheme()">Light / Dark</button>
 
 <div class="container">
     <h1>Small Caps Generator</h1>
@@ -187,6 +235,43 @@ function convert() {
     }
     document.getElementById("output").textContent = result;
 }
+
+// Dark/Light Toggle
+function toggleTheme() {
+    const body = document.body;
+    const cards = document.querySelectorAll(".card");
+    const header = document.querySelector("body");
+    if(body.style.background.includes("linear-gradient")) {
+        // Light theme
+        body.style.background = "#f7f9fc";
+        body.style.color = "#1f2933";
+        cards.forEach(c => {
+            c.style.background = "#ffffff";
+            c.style.color = "#1f2933";
+        });
+    } else {
+        // Dark theme
+        body.style.background = "linear-gradient(135deg, #0f2027, #203a43, #2c5364)";
+        body.style.color = "white";
+        cards.forEach(c => {
+            c.style.background = "rgba(255, 255, 255, 0.08)";
+            c.style.color = "white";
+        });
+    }
+}
+
+// Fade-in cards
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.1 });
+
+cards.forEach(c => observer.observe(c));
 </script>
 
 </body>
